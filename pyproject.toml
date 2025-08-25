@@ -1,0 +1,36 @@
+[project]
+name = "sammy-home-visualizer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.1",
+    "fastapi>=0.111",
+    "huggingface-hub>=0.23",
+    "numpy<2",
+    "numpy<2 ; platform_machine == 'x86_64' and sys_platform == 'darwin'",
+    "numpy>=1.26 ; platform_machine != 'x86_64' or sys_platform != 'darwin'",
+    "opencv-python>=4.9",
+    "pillow>=10.0",
+    "pydantic>=2.7",
+    "python-multipart>=0.0.9",
+    "safetensors>=0.6.2",
+    "scikit-image>=0.23",
+    "segment-anything>=1.0",
+    "shapely>=2.0",
+    "torch==2.2.* ; platform_machine == 'x86_64' and sys_platform == 'darwin'",
+    "torchvision==0.17.* ; platform_machine == 'x86_64' and sys_platform == 'darwin'",
+    "tqdm>=4.66",
+    "transformers>=4.41",
+    "uvicorn>=0.30",
+]
+
+[tool.uv]
+# Only resolve for your actual environment to avoid cross-platform conflicts
+required-environments = [
+  "sys_platform == 'darwin' and platform_machine == 'x86_64' and python_full_version >= '3.10' and python_full_version < '3.12'"
+]
+
+[tool.uv.sources]
+segment-anything = { git = "https://github.com/facebookresearch/segment-anything.git" }
